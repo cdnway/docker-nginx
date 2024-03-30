@@ -1,0 +1,19 @@
+name: Docker Build & Test
+
+on:
+  push:
+    branches: [ main ]  # 触发推送到 main 分支的事件
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2  # 检出存储库内容
+
+    - name: Build Docker image
+      run: docker build -t my-docker-image .  # 构建 Docker 镜像
+
+    - name: Run tests
+      run: docker run my-docker-image npm test  # 在容器中运行测试
