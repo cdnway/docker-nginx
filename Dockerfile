@@ -1,6 +1,6 @@
 # Nginx Dockerfile
 
-FROM almalinux:9-minimal
+FROM almalinux:latest
 
 LABEL maintainer="wanyi <root@wanyigroup.com>"
 
@@ -17,18 +17,15 @@ ENV JEMALLOC_VER=5.3.0 \
 
 SHELL ["/bin/bash", "-c"]
 
-#RUN 'dnf config-manager --set-enabled crb'
+RUN yum -y update && \
+    yum -y install dnf
 
-# install powertools to get ninja-build
-RUN dnf -y install dnf-plugins-core \
-  && dnf config-manager --set-enabled powertools \
+RUN yum -y install dnf-plugins-core \
   && yum install --assumeyes epel-release 
 
-# RUN "dnf install -y epel-release"
-
-RUN 'dnf install -y wget curl tar screen curl python3 mlocate git gcc gcc-c++ make automake autoconf libtool \
+RUN yum install -y wget curl tar screen curl python3 mlocate git gcc gcc-c++ make automake autoconf libtool \
     pcre pcre-devel zlib zlib-devel openssl-devel vim python3 zip tar unzip bzip2 bzip2-devel expat-devel libuuid-devel gd gd-devel gettext-devel mhash.x86_64 libcurl-devel \
-    libxslt-devel bison patch cmake xz ssdeep ssdeep-devel yajl libunwind libunwind-devel iftop net-tools rsync perl perl-FindBin perl-IPC-Cmd'
+    libxslt-devel bison patch cmake xz ssdeep ssdeep-devel yajl libunwind libunwind-devel iftop net-tools rsync perl perl-FindBin perl-IPC-Cmd
 
 # 设置工作目录
 WORKDIR /usr/local/cdnway/src
