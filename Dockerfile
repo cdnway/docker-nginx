@@ -20,7 +20,7 @@ ENV JEMALLOC_VER=5.3.0 \
 
 #RUN 'dnf config-manager --set-enabled crb'
 
-RUN 'dnf install -y epel-release'
+RUN "dnf install -y epel-release"
 
 RUN 'dnf install -y wget curl tar screen curl python3 mlocate git gcc gcc-c++ make automake autoconf libtool \
     pcre pcre-devel zlib zlib-devel openssl-devel vim python3 zip tar unzip bzip2 bzip2-devel expat-devel libuuid-devel gd gd-devel gettext-devel mhash.x86_64 libcurl-devel \
