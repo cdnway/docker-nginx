@@ -15,7 +15,7 @@ ENV JEMALLOC_VER=5.3.0 \
     ZLIB_VER=1.3.1 \
     RESTY_DEST=/usr/local/share/luajit-2.1.0/resty
 
-SHELL ["/bin/bash", "-c"]
+#SHELL ["/bin/bash", "-c"]
 
 RUN yum -y update && \
     yum -y install dnf
@@ -23,9 +23,9 @@ RUN yum -y update && \
 RUN yum -y install dnf-plugins-core \
   && yum install --assumeyes epel-release 
 
-RUN yum install -y wget curl tar screen curl python3 mlocate git gcc gcc-c++ make automake autoconf libtool \
-    pcre pcre-devel zlib zlib-devel openssl-devel vim python3 zip tar unzip bzip2 bzip2-devel expat-devel libuuid-devel gd gd-devel gettext-devel mhash.x86_64 libcurl-devel \
-    libxslt-devel bison patch cmake xz ssdeep ssdeep-devel yajl libunwind libunwind-devel iftop net-tools rsync perl perl-FindBin perl-IPC-Cmd
+RUN yum install -y wget curl tar screen curl python3 mlocate git gcc gcc-c++ make automake autoconf libtool --allowerasing && \
+    yum install -y pcre pcre-devel zlib zlib-devel openssl-devel vim python3 zip tar unzip bzip2 bzip2-devel expat-devel libuuid-devel gd gd-devel gettext-devel mhash.x86_64 libcurl-devel --allowerasing && \
+    yum install -y libxslt-devel bison patch cmake xz ssdeep ssdeep-devel yajl libunwind libunwind-devel iftop net-tools rsync perl perl-FindBin perl-IPC-Cmd --allowerasing
 
 # 设置工作目录
 WORKDIR /usr/local/cdnway/src
