@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: almainux-latest
+    runs-on: almalinux-latest
 
     steps:
     - name: Checkout repository
