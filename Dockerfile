@@ -1,6 +1,6 @@
 # Nginx Dockerfile
 
-FROM almalinux:9-minimal
+FROM almalinux:latest
 
 LABEL maintainer="wanyi <root@wanyigroup.com>"
 
