@@ -4,9 +4,6 @@ FROM almalinux:9-minimal
 
 LABEL maintainer="wanyi <root@wanyigroup.com>"
 
-# 设置工作目录
-WORKDIR /usr/local/cdnway/src
-
 # 定义版本变量
 ENV JEMALLOC_VER=5.3.0 \
     LUAJIT_VER=2.1-20231117 \
@@ -20,7 +17,12 @@ ENV JEMALLOC_VER=5.3.0 \
 
 #RUN 'dnf config-manager --set-enabled crb'
 
-RUN "dnf install -y epel-release"
+# install powertools to get ninja-build
+RUN dnf -y install dnf-plugins-core \
+  && dnf config-manager --set-enabled powertools \
+  && yum install --assumeyes epel-release 
+
+# RUN "dnf install -y epel-release"
 
 RUN 'dnf install -y wget curl tar screen curl python3 mlocate git gcc gcc-c++ make automake autoconf libtool \
     pcre pcre-devel zlib zlib-devel openssl-devel vim python3 zip tar unzip bzip2 bzip2-devel expat-devel libuuid-devel gd gd-devel gettext-devel mhash.x86_64 libcurl-devel \
