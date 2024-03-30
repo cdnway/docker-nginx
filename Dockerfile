@@ -17,7 +17,7 @@ ENV JEMALLOC_VER=5.3.0 \
 
 #SHELL ["/bin/bash", "-c"]
 
-RUN ['dnf config-manager --set-enabled crb']
+RUN dnf config-manager --set-enabled crb
 
 RUN echo ${PCRE_VER}
 
