@@ -15,6 +15,8 @@ ENV JEMALLOC_VER=5.3.0 \
     ZLIB_VER=1.3.1 \
     RESTY_DEST=/usr/local/share/luajit-2.1.0/resty
 
+SHELL ["/bin/bash", "-c"]
+
 #RUN 'dnf config-manager --set-enabled crb'
 
 # install powertools to get ninja-build
