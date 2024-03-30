@@ -20,7 +20,7 @@ ENV JEMALLOC_VER=5.3.0 \
 RUN yum -y update && \
     yum -y install dnf
 
-RUN dnf config-manager --set-enabled crb
+RUN /usr/bin/dnf config-manager --set-enabled crb
 
 RUN echo ${PCRE_VER}
 
