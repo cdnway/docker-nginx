@@ -24,20 +24,20 @@ RUN yum -y install dnf-plugins-core \
   && yum install --assumeyes epel-release 
 
 RUN yum install -y wget curl tar screen curl python3 mlocate git gcc gcc-c++ make automake autoconf libtool --allowerasing && \
-    yum install -y pcre pcre-devel zlib zlib-devel openssl-devel vim python3 zip tar unzip bzip2 bzip2-devel expat-devel libuuid-devel gd gd-devel gettext-devel mhash.x86_64 libcurl-devel --allowerasing && \
+    yum install -y pcre pcre-devel zlib zlib-devel openssl-devel vim python3 zip tar unzip bzip2 bzip2-devel expat-devel libuuid-devel gd gd-devel gettext-devel mhash.x86_64 libcurl-devel jemalloc-devel --allowerasing && \
     yum install -y libxslt-devel bison patch cmake xz ssdeep ssdeep-devel yajl libunwind libunwind-devel iftop net-tools rsync perl perl-FindBin perl-IPC-Cmd --allowerasing
 
 # 设置工作目录
-WORKDIR /usr/local/cdnway/src
+#WORKDIR /usr/local/cdnway/src
 # 下载并安装jemalloc
-RUN if [ -f "jemalloc-${JEMALLOC_VER}.tar.bz2" ]; then rm -rf jemalloc-${JEMALLOC_VER}.tar.bz2; fi \
-    && wget -O jemalloc-${JEMALLOC_VER}.tar.bz2 https://github.com/jemalloc/jemalloc/releases/download/${JEMALLOC_VER}/jemalloc-${JEMALLOC_VER}.tar.bz2 \
-    && if [ ! -d "jemalloc-${JEMALLOC_VER}" ]; then tar -xvf jemalloc-${JEMALLOC_VER}.tar.bz2; fi \
-    && cd jemalloc-${JEMALLOC_VER} \
-    && ./configure --prefix=/usr/local \
-    && make \
-    && make install \
-    && ldconfig
+#RUN if [ -f "jemalloc-${JEMALLOC_VER}.tar.bz2" ]; then rm -rf jemalloc-${JEMALLOC_VER}.tar.bz2; fi \
+#    && wget -O jemalloc-${JEMALLOC_VER}.tar.bz2 https://github.com/jemalloc/jemalloc/releases/download/${JEMALLOC_VER}/jemalloc-${JEMALLOC_VER}.tar.bz2 \
+#    && if [ ! -d "jemalloc-${JEMALLOC_VER}" ]; then tar -xvf jemalloc-${JEMALLOC_VER}.tar.bz2; fi \
+#    && cd jemalloc-${JEMALLOC_VER} \
+#    && ./configure --prefix=/usr/local \
+#    && make \
+#    && make install \
+#    && ldconfig
 
 # 设置工作目录
 WORKDIR /usr/local/cdnway/src
