@@ -150,7 +150,14 @@ RUN for module in $NGINX_MODULES; do \
 
 # 设置工作目录
 WORKDIR /usr/local/cdnway/src/nginx-${NGINX_VER}
-
+# 设置 LUAJIT_LIB 环境变量
+ENV LUAJIT_LIB=/usr/local/lib
+# 设置 LUAJIT_INC 环境变量
+ENV LUAJIT_INC=/usr/local/include/luajit-2.1/
+# 设置 SREGEX_INC 环境变量
+ENV SREGEX_INC=/usr/local/lib/include
+# 设置 SREGEX_LIB 环境变量
+ENV SREGEX_LIB=/usr/local/lib
 # 配置并构建 NGINX
 RUN ./configure \
     --prefix=/usr/local/nginx \
