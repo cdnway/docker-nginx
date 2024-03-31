@@ -34,7 +34,7 @@ RUN if [ -f "jemalloc-${JEMALLOC_VER}.tar.bz2" ]; then rm -rf jemalloc-${JEMALLO
     && wget -O jemalloc-${JEMALLOC_VER}.tar.bz2 https://github.com/jemalloc/jemalloc/releases/download/${JEMALLOC_VER}/jemalloc-${JEMALLOC_VER}.tar.bz2 \
     && if [ ! -d "jemalloc-${JEMALLOC_VER}" ]; then tar -xvf jemalloc-${JEMALLOC_VER}.tar.bz2; fi \
     && cd jemalloc-${JEMALLOC_VER} \
-    && ./configure \
+    && ./configure --prefix=/usr/local \
     && make \
     && make install \
     && ldconfig
