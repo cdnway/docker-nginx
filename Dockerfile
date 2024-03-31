@@ -93,8 +93,7 @@ RUN git clone https://github.com/quictls/openssl \
     && make install_dev
     
 # 设置工作目录
-WORKDIR /usr/local/cdnway/src/nginx-${NGINX_VER}
-
+WORKDIR /usr/local/cdnway/src
 # 下载并解压 nginx
 RUN if [ ! -f "nginx-${NGINX_VER}.tar.gz" ]; then wget -4 http://nginx.org/download/nginx-${NGINX_VER}.tar.gz; fi \
     && if [ -d "nginx-${NGINX_VER}" ]; then rm -rf "nginx-${NGINX_VER}"; fi \
@@ -102,7 +101,6 @@ RUN if [ ! -f "nginx-${NGINX_VER}.tar.gz" ]; then wget -4 http://nginx.org/downl
 
 # 设置工作目录
 WORKDIR /usr/local/cdnway/src/nginx-${NGINX_VER}/pkgmod
-   
 # 下载并解压pcre
 RUN if [ ! -f "pcre-${PCRE_VER}.tar.gz" ]; then wget -4 https://phoenixnap.dl.sourceforge.net/project/pcre/pcre/${PCRE_VER}/pcre-${PCRE_VER}.tar.gz; fi \
     && tar xfz pcre-${PCRE_VER}.tar.gz
