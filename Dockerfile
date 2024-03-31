@@ -31,9 +31,9 @@ RUN yum install -y wget curl tar screen curl python3 mlocate git gcc gcc-c++ mak
 WORKDIR /usr/local/cdnway/src
 
 # 下载、编译并安装 brotli
-RUN git clone --depth 1 -b master --single-branch https://github.com/google/brotli.git \
-    && cd brotli \
-    && ./configure-cmake --disable-debug \
-    && make \
-    && make install
+RUN git clone https://github.com/google/brotli \
+    && cd brotli && mkdir out && cd out \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local .. \
+    && cmake --build . --config Release --target install
 
+    
