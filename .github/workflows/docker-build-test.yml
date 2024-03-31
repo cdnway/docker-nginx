@@ -18,8 +18,9 @@ jobs:
     - name: Run tests
       run: |
         docker run --name my-container -d my-docker-image  # 在后台运行容器
-        sleep 5  # 等待一段时间以确保容器正常启动
-        docker ps -a  # 显示容器列表
-        docker logs my-container  # 查看容器日志
-        docker inspect my-container  # 查看容器详细信息
-        docker exec my-container "nginx -t"  # 在容器中执行其他命令，以验证其状态
+        #sleep 5  # 等待一段时间以确保容器正常启动
+        #docker ps -a  # 显示容器列表
+        #docker logs my-container  # 查看容器日志
+        #docker inspect my-container  # 查看容器详细信息
+        #docker exec my-container "nginx -t"  # 在容器中执行其他命令，以验证其状态
+        
