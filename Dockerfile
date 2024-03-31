@@ -183,7 +183,7 @@ RUN ./configure \
     --with-http_dav_module --with-http_addition_module \
     --with-http_realip_module \
     --with-cc-opt="-Wno-error -I /usr/local/quictls/include" \
-    --with-ld-opt="-Wl,-E -ljemalloc -L /usr/local/quictls/lib64" \
+    --with-ld-opt="-Wl,-E -L /usr/local/quictls/lib64" \
     && make \
     && make install
 
